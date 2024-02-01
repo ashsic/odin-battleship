@@ -1,0 +1,18 @@
+const createShip = (shipLength) => {
+  const ship = {
+    length: shipLength,
+    hits: 0,
+
+    // Method for adding hits:
+    hit() {
+      this.hits += 1
+    },
+
+    // Bool returning method for whether or not ship is sunk
+    isSunk() {
+      return this.hits === this.length
+    }
+  }
+
+  return ship;
+}
