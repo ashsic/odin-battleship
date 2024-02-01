@@ -16,3 +16,5 @@ const createShip = (shipLength) => {
 
   return ship;
 }
+
+export default createShip;
