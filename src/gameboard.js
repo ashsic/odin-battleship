@@ -1,25 +1,11 @@
-// import createPlayer from './player';
-// import createComputer from './computerPlayer';
+import createShip from "./ship";
 
-const createShip = (shipName, shipLength) => {
-  const ship = {
-    name: shipName,
-    length: shipLength,
-    hits: 0,
-
-    // Method for adding hits:
-    hit() {
-      this.hits += 1
-    },
-
-    // Bool returning method for whether or not ship is sunk
-    isSunk() {
-      return this.hits === this.length
-    }
-  }
-
-  return ship;
-}
+// createGameboard function creates a gameboard hardcoded to size 10x10
+// each cell has 4 states:
+//  0: empty
+//  1: empty, hit
+//  ship: occupied
+//  2: occupied, hit
 
 const createGameboard = () => {
   const shipList = [
@@ -164,116 +150,4 @@ const createGameboard = () => {
 
 
 
-
-//import createGameboard from "./gameboard";
-
-const createComputerPlayer = () => {
-  const randomCoords = () => {
-    const x = Math.floor(Math.random() * 10);
-    const y = Math.floor(Math.random() * 10);
-    const trueOrFalse = Math.floor(Math.random() * 2);
-    return [x, y, trueOrFalse];
-  }
-
-  const computerPlayer = {
-    gameboard: createGameboard(),
-    enemy: null,
-
-    placeRandomlyOnBoard() {
-      console.log(this.gameboard.listShips())
-      this.gameboard.listShips().forEach((ship) => {
-        while (true) {
-          let [x, y, trueOrFalse] = randomCoords();
-          if (this.gameboard.placeShip(ship, x, y, trueOrFalse)) {
-            break;
-          }
-        }
-      })
-    },
-
-    sendRandomAttack() {
-      const [x, y] = randomCoords();
-      return [x, y];
-    }
-  }
-
-  return computerPlayer;
-}
-
-const createPlayer = () => {
-  const randomCoords = () => {
-    const x = Math.floor(Math.random() * 10);
-    const y = Math.floor(Math.random() * 10);
-    const trueOrFalse = Math.floor(Math.random() * 2);
-    return [x, y, trueOrFalse];
-  }
-
-  const player = {
-    gameboard: createGameboard(),
-    enemy: null,
-
-    sendAttack() {
-      const x_coord = prompt('enter x coord')
-      const y_coord = prompt('enter y coord')
-      return [x_coord, y_coord];
-    },
-
-    placeRandomlyOnBoard() {
-      console.log(this.gameboard.listShips())
-      this.gameboard.listShips().forEach((ship) => {
-        while (true) {
-          let [x, y, trueOrFalse] = randomCoords();
-          if (this.gameboard.placeShip(ship, x, y, trueOrFalse)) {
-            break;
-          }
-        }
-        
-      })
-    },
-  }
-
-  return player;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-// Gameloop
-
-// initializing player and CPU
-
-const player = createPlayer();
-const CPU = createComputerPlayer();
-
-CPU.placeRandomlyOnBoard();
-player.placeRandomlyOnBoard();
-
-
-while (true) {
-  // CPU turn
-  while (true) {
-    let result = player.gameboard.receiveAttack(...CPU.sendRandomAttack())
-    if (result) {
-      console.log(result);
-      break;
-    }
-  }
-
-  if (player.gameboard.sunkShips === 5) {
-    console.log('you lose!');
-    break;
-  }
-
-  // Player turn
-  while (true) {
-    let result = CPU.gameboard.receiveAttack(...player.sendAttack())
-    if (result) {
-      console.log(result);
-      break;
-    }
-  }
-
-  if (CPU.gameboard.sunkShips === 5) {
-    console.log('you win!');
-    break;
-  }
-}
+export default createGameboard;

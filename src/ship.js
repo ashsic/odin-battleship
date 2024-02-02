@@ -6,12 +6,12 @@ const createShip = (shipName, shipLength) => {
 
     // Method for adding hits:
     hit() {
-      this.hits += 1;
+      this.hits += 1
     },
 
     // Bool returning method for whether or not ship is sunk
     isSunk() {
-      return this.hits === this.length;
+      return this.hits === this.length
     }
   }
 
