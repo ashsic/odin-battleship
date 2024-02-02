@@ -29,6 +29,29 @@ const createShip = (shipLength) => {
 //  2: occupied, hit
 
 const createGameboard = () => {
+  const shipList = [
+    {
+      shipName: 'Carrier',
+      shipLength: 5
+    },
+    {
+      shipName: 'Battleship',
+      shipLength: 4
+    },
+    {
+      shipName: 'Destroyer',
+      shipLength: 3
+    },
+    {
+      shipName: 'Submarine',
+      shipLength: 3
+    },
+    {
+      shipName: 'Patrol Boat',
+      shipLength: 2
+    }
+  ];
+
   const gameboard = {
     sunkShips: 0,
     board: [
@@ -139,17 +162,6 @@ const createGameboard = () => {
 }
 
 
-let board1 = createGameboard()
 
-
-console.log(board1.board)
-
-board1.placeShip(5,2,5, false)
-
-console.log(board1.board)
-
-board1.placeShip(5,5,3)
-
-console.log(board1.board)
 
 export default createGameboard;
