@@ -176,7 +176,7 @@ const createComputerPlayer = () => {
       console.log(this.board.listShips())
       this.board.listShips().forEach((ship) => {
         while (true) {
-          let [x, y, trueOrFalse] = randomPlacement();
+          let [x, y, trueOrFalse] = randomCoords();
           if (this.board.placeShip(ship, x, y, trueOrFalse)) {
             break;
           }
@@ -186,7 +186,8 @@ const createComputerPlayer = () => {
     },
 
     sendRandomAttack() {
-
+      const [x, y] = randomCoords();
+      return [x, y];
     }
   }
 
@@ -198,3 +199,5 @@ const CPU = createComputerPlayer()
 CPU.placeRandomlyOnBoard()
 
 console.log(CPU.board.board);
+
+console.log(CPU.sendRandomAttack())

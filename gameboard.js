@@ -141,7 +141,7 @@ const createGameboard = () => {
 
     receiveAttack(x_coord, y_coord) {
       if (!this.isValidAttack(x_coord, y_coord)) {
-        return; // invalid attack, throw error, retry
+        return; // invalid attack, throw error?, retry
       }
 
       if (this.board[y_coord][x_coord] === 0) {
