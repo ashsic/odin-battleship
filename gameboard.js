@@ -151,3 +151,5 @@ console.log(board1.board)
 board1.placeShip(5,5,3)
 
 console.log(board1.board)
+
+export default createGameboard;
