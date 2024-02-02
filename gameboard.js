@@ -67,6 +67,10 @@ const createGameboard = () => {
       [0,0,0,0,0,0,0,0,0,0]
     ],
 
+    listShips() {
+      return shipList;
+    },
+
     shipSunk() {
       this.sunkShips++;
     },

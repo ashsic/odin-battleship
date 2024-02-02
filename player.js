@@ -39,9 +39,7 @@ const createGameboard = () => {
     ],
 
     listShips() {
-      for (let ship of shipList) {
-        console.log(ship)
-      }
+      return shipList;
     },
 
     shipSunk() {
@@ -161,7 +159,7 @@ const createPlayer = () => {
 
 const player1 = createPlayer()
 
-console.log(player1.gameboard.listShips())
+player1.gameboard.listShips()
 
 
 
